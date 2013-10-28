@@ -5,7 +5,7 @@
     disabled: false
     concurrent: true
     quiet-period: 5
-    workspace: /Users/Shared/Jenkins/Home/workspace/Build/helloworld
+    workspace: ${JENKINS_HOME}/workspace/Build/helloworld
     block-downstream: false
     block-upstream: false
     triggers:
