@@ -1,0 +1,21 @@
+List of plugins to Jenkins 1.535:
+git 	2.0
+ssh credentials
+ssh agent
+git client
+scp api
+
+*Note:
+did this on the mac 10.8.5.
+I couldn't get the following  to work:
+- RPM - installed with macport, but it's not know by shell invoked by jenkins
+- Git - don't know why but Jenkins couldn't connect to https://github.com Gave up
+- many jjb targets, including scm: maven: publish: didn't work, had no effect
+Also, python's white space is a real pain. Spent much time indenting to get past teh python
+interpreter. Reminded me of some buggy Makefiles.
+
+
+I should set-up VirtualBox or some other hypervisor on my mac, just a bit short on time.
+So I have only one job instead of three, but id does what was asked except:
+- no jobs are spawned on git ci (think I have the right trigger, but Git plugin wasn't working)
+
