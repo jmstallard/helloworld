@@ -1,0 +1,26 @@
+- job:
+    name: Build
+    project-type: freestyle
+    defaults: global
+    disabled: false
+    concurrent: true
+    quiet-period: 5
+    workspace: /Users/Shared/Jenkins/Home/workspace/Build/helloworld
+    block-downstream: false
+    block-upstream: false
+    triggers:
+      - github
+    scm:
+      -git:
+        url: git://github.com/jmstallard/helloworld.git
+        git: /usr/bin/git
+        reference-rep: /
+    builders:
+      - maven-target:
+          maven-version: Maven3
+          pom: pom.xml
+          goals: package
+      - shell: "bash -c \"cp target/helloworld-1.0-SNAPSHOT.jar /temp/$(date +%y%m%d)_${BUILD_NUMBER}\""
+      - shell: "bash -c \"java -cp  /temp/$(date +%y%m%d)_${BUILD_NUMBER} HelloWorld Jenkins \""
+    publish:
+      - shell: "echo hello, too bad publish doesn't work"
